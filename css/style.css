@@ -1,0 +1,215 @@
+@import 
+url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: "Poppins";
+}
+
+body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #111;
+      overflow: hidden;
+}
+
+
+.wrapper {
+      margin-top: 20px;
+      position: relative;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: colorful 30s linear infinite;
+}
+.title {
+      position: absolute;
+      top: 0;
+      font-weight: 550;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      padding: 10px 0 0;
+      border-bottom: 1px solid #0ef;
+      color: rgb(217, 184, 0);
+}
+
+@keyframes colorful {
+      100% {
+            filter: hue-rotate(360deg);
+      }
+}
+
+.number-hours,
+.bar-seconds {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      /* background: purple; */
+      border-radius: 50%;
+}
+
+.bar-seconds span {
+      position: absolute;
+      transform: rotate(calc(var(--index) * 6deg));
+      inset: -20px;
+      text-align: center;
+}
+
+.bar-seconds span p {
+      display: inline-block;
+      width: 2px;
+      height: 12px;
+      background: #0ef;
+}
+
+/* 5n = every multiple of 5 */
+.bar-seconds span:nth-child(5n) p {
+      background-color: #0ef;
+      width: 6px;
+      height: 18px;
+      transform: translateY(1px);
+      box-shadow: 0 0 10px #0ef;
+}
+
+.number-hours span {
+      position: absolute;
+      /* 360deg / 12 = 30deg */
+      transform: rotate(calc(var(--index) * 30deg));
+      inset: 6px;
+      text-align: center;
+}
+
+.number-hours span p {
+      font-size: 52px;
+      transform: rotate(calc(var(--index) * -30deg));
+      color: #0ef;
+      text-shadow: 0 0 10px #0ef;
+}
+
+.hands-box {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.hands-box .hand {
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+}
+
+.hands-box .hand i {
+      display: inline-block;
+      transform-origin: bottom;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #0ef;
+}
+
+.hands-box .hours {
+      width: 320px;
+      height: 320px;
+}
+.hands-box .hours i {
+      width: 8px;
+      height: 160px;
+      background-color: #0ef;
+}
+.hands-box .minutes {
+      width: 480px;
+      height: 480px;
+}
+
+.hands-box .minutes::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 25px;
+      height: 25px;
+      background: #0ef;
+      border-radius: 50%;
+      box-shadow: 0 0 5px #0ef;
+}
+
+.hands-box .minutes i {
+      width: 8px;
+      height: 240px;
+      background-color: #0ef;
+}
+.hands-box .second {
+ width: 450px;
+      height: 450px;
+}
+.hands-box .second::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+.hands-box .second i {
+      width: 4px;
+      height: calc(240px + 70px);
+      background-color: white;
+      box-shadow: none;
+}
+
+@media (max-width: 600px) {
+      .wrapper {
+            width: 80vw;
+            height: 80vw;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+      }
+
+      .number-hours span p {
+            font-size: 8vw; /* تكبير الأرقام للشاشات الصغيرة */
+      }
+
+      .hands-box .hours {
+            width: 48vw; /* زيادة عرض عقرب الساعات للشاشات الصغيرة */
+            height: 48vw;
+      }
+
+      .hands-box .hours i {
+            width: 1vw;
+            height: 24vw;
+      }
+
+      .hands-box .minutes {
+            width: 72vw; /* زيادة عرض عقرب الدقائق للشاشات الصغيرة */
+            height: 72vw;
+      }
+
+      .hands-box .minutes i {
+            width: 1vw;
+            height: 36vw;
+      }
+
+      .hands-box .second {
+            width: 68vw; /* زيادة عرض عقرب الثواني للشاشات الصغيرة */
+            height: 68vw;
+      }
+
+      .hands-box .second i {
+            width: 0.6vw;
+            height: calc(36vw + 10vw);
+      }
+}
